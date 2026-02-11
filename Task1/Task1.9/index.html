@@ -1,0 +1,22 @@
+<!--Task 9: Email String Analyzer Program  
+Create a variable to store an email address. 
+Extract the username part from the email. 
+Extract the domain name from the email. 
+Store both values in separate variables. 
+Log the username and domain separately using console.log().-->
+<script>
+;
+let email = "sujiramachandran@gmail.com";
+
+// Email Analysis
+let emailLength = email.length;
+let atPosition = email.indexOf("@");
+let dotPosition = email.lastIndexOf(".");
+let userName = email.substring(0, atPosition);
+let domainName = email.substring(atPosition + 1);
+
+// Display Results
+console.log("Email ID:", email);
+console.log("Username:", userName);
+console.log("Domain Name:", domainName);
+</script>
