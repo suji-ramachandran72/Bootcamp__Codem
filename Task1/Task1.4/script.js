@@ -1,0 +1,25 @@
+//Task 4: String  Processing Program   
+//Create a variable to store a full name (string). 
+// Convert the string to uppercase and store the result.
+// Convert the string to lowercase and store the result.
+// Find and store the length of the string.
+// Extract the first name from the full name.
+//  Log all results individually using console.log() with proper labels.
+
+const prompt=require("prompt-sync")();
+let fullName = prompt("Enter your full name:");
+
+// String Operations
+let upperCaseName = fullName.toUpperCase();
+let lowerCaseName = fullName.toLowerCase();
+let nameLength = fullName.length;
+
+// Extract First Name
+let firstName = fullName.split(" ")[0];
+
+// Display Results
+console.log("Full Name:", fullName);
+console.log("Uppercase:", upperCaseName);
+console.log("Lowercase:", lowerCaseName);
+console.log("Length of the string:", nameLength);
+console.log("First Name:", firstName);

@@ -1,0 +1,37 @@
+//Task 1: Console Information Program
+// Create variables to store: ○ full name (string) 
+// email ID (string) 
+// current year (number) 
+// Create at least two numeric variables.
+// Perform at least five different mathematical operations using those numbers 
+// Display all personal details using console.log().
+// Display the result of each mathematical operation using console.log() with clear labels.
+
+const prompt = require("prompt-sync")();
+let fullName = prompt("Enter your full name:");
+let emailId = prompt("Enter your email ID:");
+let currentYear = Number(prompt("Enter the current year:"));
+
+let num1 = Number(prompt("Enter first number:"));
+let num2 = Number(prompt("Enter second number:"));
+
+// Mathematical Operations
+let addition = num1 + num2;
+let subtraction = num1 - num2;
+let multiplication = num1 * num2;
+let division = num1 / num2;
+let modulus = num1 % num2;
+
+// Display Personal Details
+console.log("----- Personal Details -----");
+console.log("Full Name:", fullName);
+console.log("Email ID:", emailId);
+console.log("Current Year:", currentYear);
+
+// Display Mathematical Results
+console.log("----- Mathematical Operations -----");
+console.log("Addition:", addition);
+console.log("Subtraction:", subtraction);
+console.log("Multiplication:", multiplication);
+console.log("Division:", division);
+console.log("Modulus:", modulus);
