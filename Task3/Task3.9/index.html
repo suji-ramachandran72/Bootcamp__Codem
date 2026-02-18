@@ -1,0 +1,69 @@
+<!--Task 9: DOM Traversal 
+Requirements 
+1. Select a specific element from the DOM. 
+2. Access and modify: 
+a. Its parent element 
+b. At least one child element 
+c. One sibling element 
+3. Update either the textContent or styles of the traversed elements. 
+4. Use DOM traversal properties only (no re-selecting elements). 
+5. Ensure the changes are visible in the browser. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Traversal Example</title>
+    <style>
+        .container{
+            padding:20px;
+            border:2px solid black;
+            margin:20px;
+        }
+
+        .box{
+            padding:10px;
+            margin:10px;
+            background-color:lightgray;
+        }
+
+        .child{
+            padding:5px;
+            margin-top:5px;
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>DOM Traversal</h2>
+
+<div class="container">
+    <div class="box">Sibling Box 1</div>
+    <div class="box" id="target">
+        Target Box
+        <p class="child">Child Paragraph</p>
+    </div>
+    <div class="box">Sibling Box 2</div>
+</div>
+
+<button id="btn">Traverse DOM</button>
+
+<script>
+    let target = document.getElementById("target");
+    let button = document.getElementById("btn");
+    button.addEventListener("click", function() {
+        let parent=target.parentElement;
+        parent.style.backgroundColor="lightyellow";
+        let child=target.firstElementChild;
+        child.textContent="Child Updated!";
+        child.style.color="red";
+        let nextSibling=target.nextElementSibling;
+        nextSibling.style.backgroundColor="lightblue";
+        nextSibling.textContent="Next Sibling Modified";
+
+    });
+</script>
+
+</body>
+</html>

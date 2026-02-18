@@ -1,0 +1,28 @@
+<!--Task 5: Object Methods Using this 
+Requirements 
+1. Create an object with: 
+a. At least two properties. 
+b. At least one method. 
+2. The method must: 
+a. Use the this keyword to access object properties. 
+b. Update at least one property of the object. 
+3. Log the updated property values from inside the method. 
+4. Call the method and confirm that the object’s data has changed. 
+5. Log the final object state to the console. -->
+<script>
+    let userProfile={
+        name:'Suji',
+        age:19,
+        email:'sujiramachandran@gmail.com',
+        isActive:false,
+        updateprofile:function(){
+            this.age+=1;
+            this.isActive=true;
+            console.log("Updated property:\nAge:"+this.age+"\nActive:"+this.isActive);
+        }
+    };
+
+    userProfile.updateprofile();
+    console.log("Name:"+userProfile.name+"\nAge:"+userProfile.age+"\nEmail:"+userProfile.email+"\nActive:"+userProfile.isActive);
+    //console.log(userProfile);
+</script>

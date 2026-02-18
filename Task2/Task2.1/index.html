@@ -1,0 +1,79 @@
+<!--Task 1 – Login Access System 
+Requirements : 
+• Create 3 buttons: Admin, User, Guest 
+• Create validateLogin(username, password) 
+• On button click: 
+• Call validateLogin() 
+• If valid: 
+o admin → "Full access granted" 
+o user → "Limited access granted" 
+o guest → "Read-only access" 
+• Else → "Invalid credentials" .-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Access System</title>
+</head>
+<body>
+    <h1>Login Access System</h1>
+    <form>
+        <label>Username</label>
+        <input type="text" id="username" required><br><br>
+        <label >Password</label>
+        <input type="password" id="password" required><br><br>
+    </form>
+    <button  onclick='handleLogin("admin")'> Admin </button>
+    <button  onclick='handleLogin("user")'> User </button>
+    <button  onclick='handleLogin("guest")'> Guest </button><br><br>
+    <div id="message"></div>
+</body>
+<script>
+   
+    function validateLogin(username,password){
+        if(username==='admin' && password=== 'admin123'){
+              return "admin";
+        }
+        else if(username==='user' && password=== 'user123'){
+              return "user";
+        }
+        else if(username==='guest' && password=== 'guest123'){
+              return "guest";
+        }
+        else{
+            return "Invalid";
+        }
+      
+  }
+
+    
+    function handleLogin(role){
+        const password=document.getElementById("password").value;
+        const username=document.getElementById("username").value;
+        let result=validateLogin(username,password);
+        let message=document.getElementById("message");
+        if(result== role){
+           if(role ==="admin"){
+            message.innerText="Full access granted";
+            console.log("Full access granted");
+        }
+        else if(role === "user"){
+            message.innerText="Limited access granted";
+            console.log("Limited access granted" );
+        }
+         else if(role === "guest"){
+            message.innerText="read only access granted" ;
+            console.log("read only access granted" );
+        }
+        }
+        else{
+            message.innerText="Invalide credentials!";
+            console.log("Invalide credentials!");
+        }
+        
+       
+    }
+</script>
+</html>

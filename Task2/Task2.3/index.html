@@ -1,0 +1,77 @@
+<!--Task 3 – Online Order Status 
+Requirements : 
+1. Create checkOrder(isPaid, inStock) 
+2. Conditions: 
+3. Paid + In stock → Order confirmed 
+4. Paid + Out of stock → Order delayed 
+5. Not paid → Payment required 
+6. Show result using alert() -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Order Status</title>
+ </head>
+ <body>
+    <h1>Online Order Status</h1>
+        <form>
+        <label>Paid(true/flase)</label>
+        <input type="text" id="paid" required><br><br>
+        <label >Stock(true/flase)</label>
+        <input type="text" id="stock" required><br><br>
+    </form>
+    <button onclick="checkStatus('paid +in stock')">Paid+ In stock</button>
+    <button onclick="checkStatus('paid + out of stock')">Paid+Out of stock</button>
+    <button onclick="checkStatus('not paid')">Not Paid</button>
+    <div id="message"></div>
+ </body>
+ <script>
+    function checkOrder(isPaid,inStock){
+        if(isPaid === 'false' && inStock === 'true') {
+             return 'not paid';
+        }
+        else if(isPaid === 'true' && inStock === 'true') {
+            return 'paid +in stock';
+        }
+        else if(isPaid === 'true' && inStock === 'false'){
+            return 'paid + out of stock';
+        }else{
+            return 'invalid';
+        }
+      
+    
+        
+    }
+    function checkStatus(type){
+        let isPaid=document.getElementById('paid').value;
+        let inStock=document.getElementById('stock').value;
+        let result=checkOrder(isPaid,inStock);
+        let message=document.getElementById('message');
+         if(result== type){
+           if(type === 'not paid'){
+            alert("Payment Required");
+            console.log("Payment Required");
+        }
+        else if(type === 'paid +in stock'){
+             alert("Order Confirmed");
+            console.log("Order Confirfmed" );
+        }
+         else if(type === 'paid + out of stock'){
+            alert("Order delayed");
+            console.log("Order Delayed" );
+        }
+        }
+        else{
+
+            alert("invalid") ;
+             console.log("Invalid" );
+        }
+        
+        
+       
+    }
+
+    
+ </script>
+ </html>

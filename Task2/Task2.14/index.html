@@ -1,0 +1,60 @@
+<!--Task 14 – Notification Filter 
+Requirements: 
+• Check notification message content and urgency flag. 
+• Classify notification as Important or Normal. 
+• Display notification type with formatted message.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Message Priority Formatter</title>
+</head>
+<body>
+    <h1> Message Priority Formatter</h1>
+    <form>
+        <label>Enter a message:</label>
+        <input type="text" id="message" required><br><br>
+        <label> Is Urgent?</label>
+        <select id="urgent">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </form><br><br>
+    <button onclick="formatMessage()">Process Message</button>
+</body>
+<script>
+    function processMessage(message, isUrgent){
+        message=message.toLowerCase();
+        if(message === ''){
+            console.log("Message cannot be empty");
+        }
+        let hasImportantWord=message.includes('error') || message.includes('alert') || message.includes('warning') || message.includes('urgent');
+        let type;
+        if(hasImportantWord && isUrgent) {
+            type='Important';
+        }
+        else{
+            type='Normal';
+        }
+        let formattedMessage;
+        if(type === 'Important') {
+            formattedMessage="IMPORTANT:"+ message.toUpperCase();
+        }
+       else{
+           formattedMessage="INFO:"+ message.toLowerCase();
+        }
+
+        console.log("Original message:"+message);
+       console.log("Notification Type:"+ type);
+        console.log("Final Message:"+formattedMessage);
+    }
+    function formatMessage(){
+    let message=document.getElementById("message").value;
+    let isUrgent=document.getElementById("urgent").value.toLowerCase()== 'true';
+    processMessage(message, isUrgent);
+    
+    }
+    
+</script>
+</html>

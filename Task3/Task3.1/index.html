@@ -1,0 +1,49 @@
+<!--Task 1: User Profile Object Manipulation 
+Requirements 
+1. Create an object named userProfile with at least the following properties: 
+a. name (string) 
+b. age (number) 
+c. email (string) 
+d. isActive (boolean) 
+2. Update at least two properties using dot notation. 
+3. Update at least two properties using bracket notation. 
+4. Add one new property dynamically using bracket notation. 
+5. Display the entire updated object in the console. 
+6. Log each property value individually with clear labels.-->
+     
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Object Manipulation </title>
+</head>
+<body>
+    <h1>User Profile Object Manipulation </h1>
+</body>
+<script>
+    let userProfile={
+        name:'Suji',
+        age:18,
+        email:'suji@gmail.com',
+        isActive: false
+    }
+    function updateProfile(user){
+        user.name='Suji Ramachandran';
+        user.age=20;
+        user['email']='sujiramachandran@gmail.com';
+        user['isActive']=true;
+        user['phoneno']='1234567890';
+        return "updated datailes:\nName:"+ user.name +"\nAge:"+user.age+'\nEmail:'+user['email']+"\nActive:"+user['isActive']+"\nPhoneno:"+user['phoneno'];
+
+    }
+    let result=updateProfile(userProfile);
+    console.log("Name:"+userProfile.name);
+    console.log("Age:"+userProfile.age);
+    console.log("Email:"+userProfile.email);
+    console.log("Active:"+userProfile.isActive);
+    console.log("Phoneno:"+userProfile.phoneno);
+</script>
+</html>

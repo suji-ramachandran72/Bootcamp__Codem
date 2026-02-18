@@ -1,0 +1,48 @@
+<!--Task 4 – Coin Toss Game 
+Requirements: 
+• Create Heads and Tails buttons 
+• On click: 
+o Pass player choice to function 
+o Generate random computer choice 
+• If both match → Player wins 
+• Else → Player loses 
+• Show using alert(): 
+o Player choice 
+o Computer choice 
+o Result -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Task Game</title>
+ </head>
+ <body>
+    <h1>Coin task Game</h1>
+    <button onclick="playGame('head')">Head</button>
+    <button onclick="playGame('tail')">Tail</button>
+
+ </body>
+ <script>
+    
+    function playGame(userChoice){
+        let randomnumber=Math.random();
+        let computerChoice='';
+        if(randomnumber < 0.5){
+            computerChoice='head';
+        }
+        else{
+            computerChoice='tail';
+        }
+    
+    if(userChoice === computerChoice){
+        alert(`computer choice: ${computerChoice}\n You choice: ${userChoice}\n Result:you win!!!`);
+        console.log(`computer choice: ${computerChoice}\n You choice: ${userChoice}\n Result:you win!!!`);
+    }else{
+        alert(`computer choice: ${computerChoice}\n You choice: ${userChoice}\n Rsult:you loss!!!`);
+        console.log(`computer choice: ${computerChoice}\n You choice: ${userChoice}\n Rsult:you loss!!!`);
+
+    }
+}
+ </script>
+ </html>

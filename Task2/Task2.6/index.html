@@ -1,0 +1,75 @@
+<!--Task 6 – Simple Billing System 
+Requirements : 
+• Create Buttons: Regular, Member 
+• Call calculateBill(billAmount, isMember) 
+• If billAmount ≤ 0 → log error & stop 
+• Discounts: 
+o Member → 10% 
+o Bill ≥1000 → 5% 
+o Else → 0% 
+• Gift: 
+o Final ≥1500 → Free gift 
+• Display all details -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Billing Ststem </title>
+</head>
+<body>
+    <h1>Simple Billing Ststem</h1>
+    <form >
+        <label>billAmount</label>
+        <input type="number" id="billamount"><br><br>
+       
+    </form>
+    <button onclick="billOrder(false)">Regular</button>
+    <button onclick="billOrder(true)">Member</button>
+    
+</body>
+<script>
+    function calculateBill(billAmount, isMember){
+
+        if(isNaN(billAmount) || billAmount <=0){
+            console.log("Error: Invalid bill amount!");
+            alert("Error: Bill amount must be greater than 0");
+            return null;
+        }
+        let discount=0;
+         
+        if(isMember){
+            discount=10;
+                
+        }
+        else if(billAmount >= 1000) {
+             discount=5;
+        }
+           
+        else{
+            discount=0;
+        }
+        return discount;
+
+    }
+    function billOrder(isMember){
+    let billAmount=parseInt (document.getElementById('billamount').value);
+    //let isMember=document.getElementById('member').value.toLowerCase() === 'true';
+    let discount=calculateBill(billAmount, isMember);
+    if(discount=== null) return;
+    finalAmount=billAmount-(billAmount* discount/100);
+    let giftstatus;    
+    if(finalAmount >= 1500){
+        giftStatus="Free gifts!!!";
+    }
+    else{
+       
+        giftStatus=" No free gifts.....Better For next Time"
+    }
+    alert( "Customer Type: " + (isMember ? "Member" : "Regular"));
+    
+    console.log(`Customer Type:${ (isMember ? "Member" : "Regular")}\nBill amount = ${billAmount}\n Discount :${discount}%\n Final amount:${finalAmount}\n Gift status:${giftStatus}`);
+
+    }
+</script>
+</html>

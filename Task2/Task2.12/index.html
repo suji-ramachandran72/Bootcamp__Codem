@@ -1,0 +1,70 @@
+<!--Task 12 – Password Strength Validator 
+Requirements: 
+• Create a function to check password content (length, characters). 
+• Classify password as Weak, Medium, or Strong. 
+• Display the strength result. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Validator</title>
+</head>
+<body>
+    <h1>Password Strength Validator</h1>
+    <form>
+        <label >Password</label>
+        <input type="password" id="password" required><br><br>
+    </form>
+    <button  onclick='checkPassword()'> Password Checker </button>
+    <div id='result'></div>
+</body>
+<script>
+    function checkPasswordStrength(password) {
+
+    let hasUpper = /[A-Z]/.test(password);
+    let hasLower = /[a-z]/.test(password);
+    let hasNumber = /[0-9]/.test(password);
+    let hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < 6) {
+        return "Weak";
+    }
+
+    else if (
+        password.length >= 6 &&
+        password.length <= 8 &&
+        hasLower &&
+        hasNumber &&
+        !hasSpecial
+    ) {
+        return "Medium";
+    }
+
+    else if (
+        password.length > 8 &&
+        hasUpper &&
+        hasLower &&
+        hasNumber &&
+        hasSpecial
+    ) {
+        return "Strong";
+    }
+
+    else {
+        return "Weak";
+    }
+}
+
+    function checkPassword(){
+        const password=document.getElementById("password").value;
+        let check=checkPasswordStrength(password);
+        let result=document.getElementById('result');
+        result.innerText=check;
+        console.log(check);
+    }
+
+</script>
+
+</html>

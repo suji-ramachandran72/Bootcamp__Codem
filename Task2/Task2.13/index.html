@@ -1,0 +1,54 @@
+<!--Task 13 – Appointment Confirmation System 
+Requirements: 
+• Create checkAppointment(dateAvailable, userConfirmed). 
+o If dateAvailable is false → "Appointment Rejected" 
+o Else if userConfirmed is false → "Appointment Rejected" 
+o Else → "Appointment Confirmed" 
+• Display Confirmed or Rejected status using alert(). -->
+   
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation System</title>
+</head>
+<body>
+    <h1>Appointment Confirmation System</h1>
+    <form>
+        <label>DataAvailable(true,false)</label>
+        <input type="text" id="isDataAvailable" required><br><br>
+        <label>UserConfirmed(true,false)</label>
+        <input type="text" id="isUserConfirmed" required><br><br>
+    </form>
+    <button  onclick='checkStatus()'> Checkstatus </button><br><br>
+    <div id="result"></div>
+
+</body>
+<script>
+    function checkAppointment(isDataAvailable, isUserConfirmed){
+        if(!isDataAvailable){
+            return "Appointment Rejected";
+        }
+        else if(!isUserConfirmed){
+            return "Appointment Rejected";
+        }
+     
+        else{
+            return "Appointment Confirmed" ;
+        }
+    }
+    function checkStatus(){
+    let isDataAvailable=document.getElementById("isDataAvailable").value.toLowerCase() === 'true';
+    let isUserConfirmed=document.getElementById("isUserConfirmed").value.toLowerCase() === 'true';
+    let result=document.getElementById("result");
+    let status=checkAppointment(isDataAvailable, isUserConfirmed) ;
+    alert(status);
+    
+
+    }
+   
+</script>
+
+</html>

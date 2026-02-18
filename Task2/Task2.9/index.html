@@ -1,0 +1,60 @@
+<!--Task 9 – Message Intent Detection 
+Requirements: 
+• Create a function detectIntent(message). 
+• Validate empty or spaces → Invalid 
+• Flags 
+o isQuestion → message contains ? 
+o isComplaint → message contains "problem" or "not working" 
+• Intent 
+o Question + complaint → Urgent request 
+o Complaint → Complaint 
+o Question → Question 
+o Else → Other 
+• Log intent and original message using console.log() -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Intent Detection </title>
+</head>
+<body>
+    <h1>Message Intent Detection </h1>
+    <label>Message</label>
+    <input type="text" id="message">
+    <button onclick="validate()">Validate</button>
+</body>
+<script>
+    function detectIntent(message){
+        message=message.toLowerCase();
+        if(message===''){
+            console.log("Invalid ");
+        }
+        
+        let isQuestion=message.includes("?");
+        let isComplaint=message.includes("problem") || message.includes("not working");
+        let intent;
+        if(isQuestion && isComplaint){
+            intent="Urgent request";
+        }
+        else if(isQuestion){
+            intent="Question";
+        }
+        else if(isComplaint){
+          intent="Complaint";
+        }
+        else{
+            intent="Others";
+        }
+        console.log("Original Message:"+message);
+        console.log("Intent:"+intent);
+        
+    }
+    function validate(){
+        let message=document.getElementById('message').value;
+        detectIntent(message);
+    }
+    
+    
+</script>
+</html>

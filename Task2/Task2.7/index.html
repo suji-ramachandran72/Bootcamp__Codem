@@ -1,0 +1,66 @@
+<!--Task 7 – Travel Eligibility Checker 
+Requirements : 
+• Create checkTravelEligibility(age, ticketType, hasID). 
+• If age <= 0 → "Invalid age" and return. 
+• If ticketType not "normal" or "priority" → "Invalid ticket type" and return. 
+• Eligibility: 
+o age >= 18 and hasID → Eligible 
+o age < 18 and "priority" ticket → Eligible with guardian 
+o Else → Not eligible 
+• Fare: 
+o Base fare = ₹200 
+o "priority" → add ₹50 
+• Log eligibility, fare, ticket type, age check -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Eligibility Checker</title>
+</head>
+<body>
+    <h1>Travel Eligibility Checker</h1>
+     <form>
+        <label>Age</label>
+        <input type="number" id="age" required><br><br>
+        <label >Ticketype(normal/priority)</label>
+        <input type="text" id="ticketType" required><br><br>
+        <label>HasId(true/false)</label>
+        <input type="text" id="hasId" required><br><br>
+    </form>
+    <button onclick="checkStatus()">Check</button>
+</body>
+<script>
+    function checkTravelEligibility(age, ticketType, hasID){
+        if(isNaN(age) || age <=0){
+            console.log("Error: Invalid age!");
+            return"Invalid age";
+        }
+        ticketType = ticketType.toLowerCase();
+        if(ticketType !=  'normal' && ticketType != 'priority'){
+            return "Invalid ticket type";
+        }
+        if(age >= 18 && hasID ){
+            return "Eligible ";
+        }
+        else if( age < 18 && ticketType === "priority" ){
+            return " Eligible with guardian";
+        }
+        else{
+            return "Not eligible.."
+        }
+       
+    }
+    function checkStatus(){
+        let age=document.getElementById('age').value;
+        let ticketType=document.getElementById('ticketType').value;
+        let hasId=document.getElementById('hasId').value.toLowerCase() === 'true';
+        let status=checkTravelEligibility(age, ticketType, hasId);
+        let fare=200;
+        if(ticketType==='priority'){
+            fare+=50;
+        }
+        console.log(`Age:${age} \nEligibility:${status} \nFare:${fare}\n Ticket type:${ticketType}`);
+    }
+</script>
+</html>

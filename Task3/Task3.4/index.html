@@ -1,0 +1,33 @@
+<!--Task 4: Looping Through Student Marks 
+Requirements 
+1. Create an object where: 
+a. Keys are student names. 
+b. Values are marks (numbers). 
+2. Loop through the object using a suitable method. 
+3. For each student: 
+a. Check if the mark is greater than or equal to the pass mark. 
+b. Determine pass or fail. 
+4. Log each student’s name, mark, and pass/fail status. 
+5. Do not hardcode student names inside the loop-->
+<script>
+    let mark={
+        Suji:98,
+        Ram:87,
+        Dhanu:32,
+        Kumar:22
+    };
+    let passmark=50;
+    for(let student in mark){
+        let studentMark=mark[student];
+        let status;
+        if( studentMark >= passmark){
+           status='Pass';
+        }
+        else{
+            status='Fail';
+        }
+        console.log("Student name:"+student+"\nMark:"+ studentMark+"\nStatus:"+status);
+    }
+   
+
+</script>

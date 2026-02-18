@@ -1,0 +1,54 @@
+<!--Task 8: Dynamically Create a List from Objects 
+Requirements 
+1. Create an array containing objects (each object should have at least two properties). 
+2. Select a container element from the DOM. 
+3. Dynamically create a list element (ul or ol) using createElement(). 
+4. Loop through the array and: 
+a. Create a list item for each object. 
+b. Insert object data into the list item using textContent. 
+5. Append each list item to the list using appendChild(). 
+6. Append the final list to the DOM. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamically Create List from Objects</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        li {
+            padding: 8px;
+            margin: 5px 0;
+            background-color: lightblue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student List</h2>
+
+<div id="container"></div>
+
+<script>
+    let students = [
+        { name: "Suji", age: 20 },
+        { name: "Anu", age: 21 },
+        { name: "Kavi", age: 19 },
+        { name: "Riya", age: 22 }
+    ];
+    let container = document.getElementById("container");
+    let list = document.createElement("ul");
+    students.forEach(function(student) {
+        let li = document.createElement("li");
+        li.textContent = "Name: " + student.name + " | Age: " + student.age;
+        list.appendChild(li);
+
+    });
+    container.appendChild(list);
+
+</script>
+
+</body>
+</html>

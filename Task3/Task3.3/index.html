@@ -1,0 +1,32 @@
+<!--Task 3: Nested Shopping Cart Object 
+Requirements 
+1. Create a cart object containing: 
+a. A nested object or array for items. 
+b. Each item must have name, price, and quantity. 
+2. Access nested properties correctly to calculate the total cost. 
+3. Calculate the total price using object values only (no hardcoded numbers). 
+4. Log the final total price to the console with a clear message. 
+5. Ensure the solution works if item values change.-->
+<script>
+    let cart={
+        items:[
+            {name:'Laptop',price:50000,quantity:1},
+            {name:'Fridge',price:25000,quantity:5},
+            {name:'Washing Machine',price:10000,quantity:2},
+            {name:'Computer',price:30000,quantity:3}
+        ]
+    };
+   function calculateTotal(cart){
+    let total=0;
+    for(let i=0;i<cart.items.length;i++){
+        total +=cart.items[i].price * cart.items[i].quantity;
+    }
+    return total;
+    }
+    let finalTotal=calculateTotal(cart);
+    console.log("Total price:"+finalTotal);
+    cart.items[2].price=19000;
+    cart.items[1].quantity=1;
+    let updateTotal=calculateTotal(cart);
+    console.log("Update total:"+updateTotal);
+</script>

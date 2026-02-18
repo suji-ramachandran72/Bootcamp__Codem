@@ -1,0 +1,49 @@
+<!--Task 10 – Account Security Check 
+Requirements: 
+• Check account access using password status, OTP verification, and 
+account block status. 
+• Allow login only if all conditions are valid. 
+• Display login success or failure message.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Security Check</title>
+</head>
+<body>
+    <h1>Account Security Check</h1>
+    
+<label>Password Correct? (true/false)</label>
+<input type="text" id="password"><br><br>
+
+<label>OTP Verified? (true/false)</label>
+<input type="text" id="otp"><br><br>
+
+<label>Account Blocked? (true/false)</label>
+<input type="text" id="blocked"><br><br>
+
+<button onclick="checkLogin()">Login</button>
+
+<p id="result"></p>
+</body>
+<script>
+    function checkLogin(){
+    let passwordCorrect = document.getElementById("password").value.toLowerCase() === "true";
+    let otpVerified = document.getElementById("otp").value.toLowerCase() === "true";
+    let isBlocked = document.getElementById("blocked").value.toLowerCase() === "true";
+    if(isBlocked){
+        console.log("Blocked....Login failure!!!");
+    }
+    else if(!otpVerified){
+        console.log("OTP is not verified....Login failure!!!");
+    }
+    else if(!passwordCorrect){
+         console.log("Password is not verified....Login failure!!!");
+    }
+    else{
+        console.log("Login successfully..!!!!");
+    }
+    }
+</script>
+</html>

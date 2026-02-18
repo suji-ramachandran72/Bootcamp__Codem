@@ -1,0 +1,91 @@
+<!--Task 2 – Movie Ticket Permission 
+Requirements: 
+• Create 3 buttons: Adult, Teen, Child 
+• Each button calls checkTicket(age, hasPermission) 
+• Rules: 
+• Age 13–17 → allowed only if hasPermission === true 
+• Others → allowed normally 
+• Display Allowed / Not Allowed -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Permission</title>
+</head>
+<body>
+    <h1>Movie Ticket Permission</h1>
+    <form>
+        <label>Age</label>
+        <input type="text" id="age" required><br><br>
+        <label >Has Permission(true/flase)</label>
+        <input type="text" id="hasPermission" required><br><br>
+    </form>
+    <button onclick="checkAge('adult')">Adult</button>
+    <button onclick="checkAge('teen')">Teen</button>
+    <button onclick="checkAge('child')">Child</button><br><br>
+    <div id="result"></div>
+</body>
+<script>
+    function checkTicket(age,hasPermission){
+        if((age<13 && hasPermission === 'true' ) ||(age<13 && hasPermission === 'false' ) ) {
+            return "child";
+        }
+        else if(age >= 13 && age <= 17) {
+            return "teen";
+
+        }
+        else if((age >= 18 && age < 20 && hasPermission === 'true' ) ||(age>= 18 && age < 20 && hasPermission === 'false' ) ) {
+            return "teen";
+        }
+        else if((age>=20 && hasPermission === 'true' ) ||(age>=20 && hasPermission === 'false' ) ) {
+            return "adult";
+        }
+
+    }
+    function checkAge(role){
+    let age=parseInt(document.getElementById("age").value);
+    let hasPermission=document.getElementById("hasPermission").value;
+    let result=document.getElementById("result");
+    let message=checkTicket(age,hasPermission);
+    hasPermission=(hasPermission === 'true');
+    if(message == role){
+     if(role === 'teen'){
+        if(age >= 13 && age <= 17){
+           if(hasPermission){
+            result.innerText="Allowed";
+            console.log("allowed");
+            }
+            else{
+            result.innerText="Not Allowed";
+            console.log("Not allowed");
+           }
+        }
+        if(age >= 18 && age < 20){
+             result.innerText="Allowed";
+            console.log("allowed");   
+        }
+        
+      
+    }
+ 
+    else if(role === 'child'){
+        result.innerText="Allowed";
+        console.log("allowed");
+    }
+    else if (role === 'adult'){
+       result.innerText="Allowed";
+        console.log("allowed");
+    }
+    
+       
+    }
+    else{
+            result.innerText="Invalid!";
+            console.log("Invalid credentials!");
+    }
+    
+    }
+    
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!--Task 7: Toggle Class on Multiple Elements 
+Requirements 
+1. Create a button that the user can click. 
+2. Select multiple elements using a class selector. 
+3. Attach a click event listener to the button. 
+4. Loop through the selected elements using a loop. 
+5. Use classList.toggle() to add or remove a CSS class on each element. 
+6. The toggled class must visibly change the element’s appearance-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 150px;
+            padding: 15px;
+            margin: 10px;
+            background-color: lightgray;
+            text-align: center;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+      
+        .active {
+            background-color: rgb(111, 99, 78);
+            color: white;
+            font-weight: bold;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1> Toggle Class on Multiple Elements</h1>
+    <div class="box">Item1</div>
+    <div class="box">Item2</div>
+    <div class="box">Item3</div>
+    <div class="box">item4</div>
+    <button id="btn">Toggle</button>
+</body>
+<script>
+    let boxs=document.querySelectorAll(".box");
+    let button=document.getElementById("btn");
+    button.addEventListener("click",function(){
+        boxs.forEach(function(box){
+             box.classList.toggle("active");
+        });
+    });
+</script>
+</html>

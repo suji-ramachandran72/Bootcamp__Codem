@@ -1,0 +1,50 @@
+<!--Task 2: Function Modifying an Object 
+Requirements 
+1. Create an object representing a user or product with at least three properties. 
+2. Write a function that: 
+a. Accepts the object as a parameter. 
+b. Modifies two or more properties of the object. 
+3. The function must return a formatted string summarizing the updated object data. 
+4. Call the function and log the returned summary to the console. 
+5. Verify that the original object has been updated.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Modifying an Object </title>
+</head>
+<body>
+    <h1>Function Modifying an Object </h1>
+</body>
+<script>
+    let userProfile={
+        name:'Suji',
+        age:18,
+        email:'suji@gmail.com',
+        isActive: false
+    }
+    function updateProfile(user){
+        user.name='Suji Ramachandran';
+        user.age=20;
+        user['email']='sujiramachandran@gmail.com';
+        user['isActive']=true;
+        user['phoneno']='1234567890';
+        return "updated datailes:\nName:"+ user.name +"\nAge:"+user.age+'\nEmail:'+user['email']+"\nActive:"+user['isActive']+"\nPhoneno:"+user['phoneno'];
+
+    }
+    console.log("Before Modifiyng:\n");
+    console.log("Name:"+userProfile.name);
+    console.log("Age:"+userProfile.age);
+    console.log("Email:"+userProfile.email);
+    console.log("Active:"+userProfile.isActive);
+    
+    let result=updateProfile(userProfile);
+    console.log("After Modifiyng:\n");
+    console.log("Name:"+userProfile.name);
+    console.log("Age:"+userProfile.age);
+    console.log("Email:"+userProfile.email);
+    console.log("Active:"+userProfile.isActive);
+    console.log("Phoneno:"+userProfile.phoneno);
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!--Task 15 – Payment Status Checker 
+Requirements: 
+Create checkPaymentStatus(amount, isPaid, paymentMethod). 
+• If amount <= 0 → "Invalid payment amount" 
+• Else if isPaid is false → "Payment Pending" 
+• Else if paymentMethod is "UPI" or "Card" → "Payment Successful" 
+• Else → "Invalid payment method" 
+• Display: Payment status , Amount and Payment Method-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status Checker</title>
+</head>
+<body>
+    <h1>Payment Status Checker</h1>
+    <form>
+        <label>Amount</label>
+        <input type="number" id="amount" required><br><br>
+        <label >Paid(true/false)</label>
+        <input type="text" id="isPaid" required><br><br>
+        <label>Paymentmethod(cash/card/upi)</label>
+        <input type="text" id="paymentMethod" required><br><br>
+    </form>
+    <button  onclick='checkStatus()'> Checkstatus </button><br><br>
+    <div id="result">Result</div>
+
+</body>
+<script>
+    function checkPaymentStatus(amount, isPaid, paymentMethod){
+        if(amount<=0){
+            return "Invalid payment amount" ;
+        }
+        else if(!isPaid){
+            return "Payment Pending";
+        }
+        else if(paymentMethod === 'upi' || paymentMethod === 'card'){
+            return "Payment Successful" ;
+        }
+        else{
+            return "Invalid payment method";
+        }
+    }
+    function checkStatus(){
+    let amount=parseFloat(document.getElementById("amount").value);
+    let isPaid=document.getElementById("isPaid").value.toLowerCase() === 'true';
+    let paymentMethod=document.getElementById("paymentMethod").value.toLowerCase();
+    let result=document.getElementById("result");
+    let status= checkPaymentStatus(amount, isPaid, paymentMethod);
+    result.innerText=` Payment status :${status}\n Amount:${amount}\n Payment Method:${paymentMethod.toUpperCase()} `;
+    console.log(` Payment status :${status}\n Amount:${amount}\n Payment Method: ${paymentMethod.toUpperCase()} `);
+
+    }
+   
+</script>
+
+</html>

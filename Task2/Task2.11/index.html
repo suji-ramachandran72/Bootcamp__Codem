@@ -1,0 +1,61 @@
+<!--Task 11 – Weather Action Advisor 
+Requirements: 
+• Check weather condition (rainy/sunny/etc.) and temperature. 
+• Suggest an action (carry umbrella, stay hydrated, etc.). 
+• Display the suggestion using alert(). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Action Advisor</title>
+</head>
+<body>
+    <h1>Weather Action Advisor</h1>
+    <form>
+        <label >Temperature(C)</label>
+        <input type="number"  id=temperature required><br><br>
+        <label >Weather(cold/rainy/sunny/windy)</label>
+        <input type="text"  id=weather required><br><br>
+    </form>
+    <button onclick="suggestAction()">Suggestion</button><br>
+</body>
+<script>
+   function suggestAction(){
+    let temperature=parseInt(document.getElementById('temperature').value);
+    let weather=document.getElementById('weather').value.toLowerCase();
+    if (weather === 'rainy'){
+       //alert("Today climateis rainy....Carry an umbrella!!!");
+       if(temperature <15){
+          alert('Today climate is rainy with low temperature.....\n Carry an umbrella andWear warm clothes!!!!');
+       }
+       else if(temperature >= 15 && temperature < 30){
+        alert("Today climate is rainy with moderate temperature.....\n Wear light raincoats!!!!");
+       }
+       else if(temperature > 30){
+        alert("Today climate is rainy with hightemperature.....\n Stay hydrated!!!");
+       }
+    }
+    else if(weather == 'sunny'){
+        //alert('Today climate is sunny.....stay hydrated!!!');
+        if(temperature >= 30){
+            alert("Today climate is sunny with hightemperature.....\n Wear sunglasses  and Stay hydrated!!!");
+        }
+        else if(temperature >= 15 && temperature < 30){
+        alert("Today climate is rainy with moderate temperature.....\n Good for outdoor acctivities and Wear sunglasses!!!!");
+       }
+       else if(temperature < 25){
+        alert("Today climate is sunny with lowtemperature.....\nPlesent weather and good for outing!!!");
+       }
+    }
+    else if(weather === 'cold'){
+        alert("Today climate is cold .....\n wear warm clothes and stay indoor !!!");
+    }else if(weather == 'windy'){
+        alert("Today's climate is windy....\n Avoid staying outside log!!!");
+    }else{
+        alert("Weather comndition not recognized!!!");
+    }
+   
+   }
+</script>
+</html>

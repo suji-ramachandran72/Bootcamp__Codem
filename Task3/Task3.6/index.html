@@ -1,0 +1,36 @@
+<!--Task 6: Selecting Elements & Updating Content 
+Requirements 
+1. Create HTML elements that include: 
+a. At least one element with an id 
+b. At least two elements sharing the same class 
+2. Select: 
+a. One element using getElementById() 
+b. Multiple elements using getElementsByClassName() 
+c. One element using querySelector() 
+3. Update the textContent of each selected element. 
+4. Change at least two style properties of the selected elements dynamically. 
+5. Ensure all updates happen using JavaScript only.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Selecting Elements & Updating Content</h1>
+    <div id="title">Title</div>
+    <p class="para">This is Suji</p>
+    <p class="para">I am a Softwer Devloper and interested in web technologies!!!</p>
+    
+</body>
+<script>
+    let title=document.getElementById('title');
+    let para=document.getElementsByClassName("para");
+    let title1=document.querySelector('#title');       
+    title.innerText="Selecting Elements & Updating Content";
+    para.innerText="This is Suji Ramachandran"; 
+    title.style.color ='blue';
+    title.style.backgroundColor='lightgray';
+</script>
+</html>
