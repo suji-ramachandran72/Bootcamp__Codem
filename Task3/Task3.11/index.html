@@ -1,0 +1,37 @@
+<!--Task 11: Using the Event Object with Multiple Buttons 
+Requirements 
+1. Create at least three buttons on the page. 
+2. Select all buttons using a single selector. 
+3. Attach the same event listener to each button. 
+4. Use the event object to: 
+a. Identify which button was clicked. 
+b. Identify the event type. 
+5. Display the clicked button’s text and event type inside the DOM (not only in the console). 
+6. Ensure the output updates every time a button is clicked. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Button1</button>
+    <button id="btn">Button2</button>
+    <button id="btn">Button3</button><br><br>
+    <div id="result">result</div>
+</body>
+<script>
+    let buttons=document.querySelectorAll("#btn");
+    let result=document.getElementById("result");
+    buttons.forEach(function(btn){
+        btn.addEventListener("click",function(event){
+            let text=event.target.textContent;
+            let type=event.type;
+            result.textContent=`Clicked the ${text} Event type:${type}`;
+             console.log(result.textContent);
+    });
+    });
+    
+</script>
+</html>

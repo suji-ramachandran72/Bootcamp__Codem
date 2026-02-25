@@ -1,0 +1,87 @@
+<!--Task 13: Real-Time Input Validation 
+Requirements 
+1. Create a form with multiple input fields. 
+2. Validate input values while the user types using an appropriate event. 
+3. Highlight invalid inputs by: 
+a. Adding a CSS class when invalid. 
+b. Removing the class when valid. 
+4. Display real-time validation messages next to each input. 
+5. Ensure validation feedback updates immediately as input changes.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Real-Time Input Validation</title>
+    <style>
+        .error{
+            color:red;
+            font-size:14px;
+        }
+        .valid{
+            border:2px solid green; 
+        }
+        .invalid{
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>Name</label>
+        <input id="name" type="text">
+        <span id="nameError"></span><br><br>
+        <label>Email</label>
+        <input id=email type="email">
+        <span id="emailError"></span><br><br>
+        <label>Password</label>
+        <input id="password" type="password">
+        <span id="passwordError"></span><br><br>
+    </form>
+</body>
+<script>
+    let name=document.getElementById("name");
+    let email=document.getElementById("email");
+    let password=document.getElementById("password");
+    name.addEventListener("input",function(){
+     let error=document.getElementById("nameError");
+     if(this.value.trim()=== ""){
+        error.textContent="Name is required";
+        error.classList.add("error");
+        this.classList.add("invalid");
+        this.classList.remove("valid");
+     }else{
+        error.textContent="";
+        this.classList.add("valid");
+        this.classList.remove("invalid");
+     }
+    });
+     password.addEventListener("input",function(){
+    let error=document.getElementById("passwordError");
+    if(this.value.length < 6){
+        error.textContent="Password must be 6 characters";
+        error.classList.add("error");
+        this.classList.add("invalid");
+        this.classList.remove("valid");
+    } else {
+        error.textContent="";
+        this.classList.add("valid");
+        this.classList.remove("invalid");
+    }
+    });
+     email.addEventListener("input",function(){
+     let error=document.getElementById("emailError");
+     if(!this.value.includes("@")){
+        error.textContent="Enter valid email";
+        error.classList.add("error");
+        this.classList.add("invalid");
+        this.classList.remove("valid");
+     }else{
+        error.textContent="";
+        this.classList.add("valid");
+        this.classList.remove("invalid");
+     }
+    });
+
+</script>
+</html>

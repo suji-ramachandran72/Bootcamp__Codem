@@ -19,6 +19,7 @@ c. One sibling element
             padding:20px;
             border:2px solid black;
             margin:20px;
+            width:250px;
         }
 
         .box{
@@ -50,8 +51,8 @@ c. One sibling element
 <button id="btn">Traverse DOM</button>
 
 <script>
-    let target = document.getElementById("target");
-    let button = document.getElementById("btn");
+    let target=document.getElementById("target");
+    let button=document.getElementById("btn");
     button.addEventListener("click", function() {
         let parent=target.parentElement;
         parent.style.backgroundColor="lightyellow";

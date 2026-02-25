@@ -14,41 +14,40 @@ b. Insert object data into the list item using textContent.
     <meta charset="UTF-8">
     <title>Dynamically Create List from Objects</title>
     <style>
-        body {
+        body{
             font-family: Arial;
         }
-        li {
+        ul{
+            width:260px;
+        }
+        li{
             padding: 8px;
             margin: 5px 0;
             background-color: lightblue;
             border-radius: 5px;
+          
         }
     </style>
 </head>
 <body>
-
 <h2>Student List</h2>
-
 <div id="container"></div>
-
 <script>
-    let students = [
-        { name: "Suji", age: 20 },
-        { name: "Anu", age: 21 },
-        { name: "Kavi", age: 19 },
-        { name: "Riya", age: 22 }
+    let students=[
+        {name:"Suji",age:19},
+        {name:"Anu",age:21},
+        {name:"Kavi",age:20},
+        {name:"Riya",age:22}
     ];
-    let container = document.getElementById("container");
-    let list = document.createElement("ul");
-    students.forEach(function(student) {
+    let container=document.getElementById("container");
+    let list=document.createElement("ul");
+    students.forEach(function(student){
         let li = document.createElement("li");
-        li.textContent = "Name: " + student.name + " | Age: " + student.age;
+        li.textContent="Name: " + student.name + " | Age: " + student.age;
         list.appendChild(li);
 
     });
     container.appendChild(list);
-
 </script>
-
 </body>
 </html>

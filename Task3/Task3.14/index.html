@@ -1,0 +1,58 @@
+<!--Task 14: Keyboard Events Interaction 
+Requirements 
+1. Select an element where content will be displayed dynamically. 
+2. Listen for both keydown and keyup events. 
+3. Detect specific keys pressed by the user. 
+4. Update the content or style of the selected element based on the key pressed. 
+5. Use the event object to identify the key. 
+6. Ensure the page responds instantly to keyboard input.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Events Interaction</title>
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    margin-top:100px;
+}
+#display{
+    font-size:24px;
+    padding:20px;
+    border:2px solid black;
+    width:300px;
+    margin:auto;
+    transition:0.8s;
+}
+</style>
+</head>
+<body>
+<h2>Press Any Key</h2>
+<div id="display">Waiting for key press...</div>
+<script>
+let display=document.getElementById("display");
+document.addEventListener("keydown",function(event){
+ display.textContent="Key Down:"+event.key;
+    if(event.key==="Enter"){
+        display.style.backgroundColor="lightgreen";
+    }
+    else if(event.key==="Escape"){
+        display.style.backgroundColor="blue";
+    }
+    else if(event.key==="ArrowUp"){
+        display.textContent="Arrow Up Pressed";
+    }
+});
+
+document.addEventListener("keyup",function(event){
+    display.textContent="Key Up:"+event.key;
+    display.style.backgroundColor="green";
+
+});
+
+</script>
+
+</body>
+</html>

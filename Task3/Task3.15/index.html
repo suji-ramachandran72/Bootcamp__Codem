@@ -1,0 +1,103 @@
+<!--Task 15: Interactive To-Do List with Validation 
+Requirements 
+1. Create an object named todoData to store tasks added by the user. 
+2. Dynamically create an input field, an add button, and a task list using JavaScript. 
+3. Allow users to mark tasks as completed and remove tasks using click events. 
+4. Update both the DOM and the todoData object when tasks are added or removed. 
+5. Reuse DOM references and ensure all interactions work on a single page without reloads.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Ariel;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #tastInput{
+            padding-right:80px;
+            width:600px;
+        }
+        button{
+            padding:8px 12px;
+            margin:20px;
+            cursor:pointer;
+        }
+        ul{
+            list-style-type:none;
+            padding:0;
+        }
+        li{
+            margin:10px;
+            padding:8px;
+            border:1px solid #ccc;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .completed{
+            text-decoration: line-through;
+            color:grey;
+        }
+        .error{
+            color:red;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Interactive To-Do List with Validation </h2>
+    <div id="app"></div>
+    <p id="errorMsg" class="error"></p>
+<script>
+    let todoData={
+        tasks:[]
+    };
+    let app=document.getElementById("app");
+    let input=document.createElement("input");
+    input.id="taskInput";
+    input.placeholder="enter the new task";
+    let addBtn=document.createElement("button");
+    addBtn.textContent="Add task";
+    let taskList=document.createElement("ul");
+    app.appendChild(input);
+    app.appendChild(addBtn);
+    app.appendChild(taskList);
+    let errmsg=document.getElementById("errorMsg");
+    addBtn.addEventListener("click",function(){
+        let taskText=input.value.trim();
+        if(taskText ===""){
+            errorMsg.textContent="Task cannot be empty";
+            return;
+        }
+        errorMsg.textContent="";
+        todoData.tasks.push(taskText);
+        let li=document.createElement("li");
+        li.textContent=taskText;
+        li.addEventListener("click",function(){
+            li.classList.toggle("completed");
+        });
+        let removeBtn=document.createElement("button");
+        removeBtn.textContent="Remove";
+        removeBtn.addEventListener("click",function(e){
+            e.stopPropagation();
+            taskList.removeChild(li);
+            let index=todoData.tasks.indexOf(taskText);
+            if(index > -1){
+                todoData.tasks.splice(index,1);
+            }
+            console.log(todoData.tasks);
+        });
+        li.appendChild(removeBtn);
+        taskList.appendChild(li);
+        input.value="";
+        console.log(todoData.tasks);
+    });
+
+ </script>
+ </body>
+</html>
+  

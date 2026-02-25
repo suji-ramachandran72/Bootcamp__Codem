@@ -1,0 +1,52 @@
+<!--Task 12: Form Validation with Prevent Default 
+Requirements 
+1. Create a form with at least two input fields and a submit button. 
+2. Attach a submit event listener to the form. 
+3. Prevent the default form submission behavior. 
+4. Validate that all required fields are filled. 
+5. Display an error message inside the DOM for each empty field. 
+6. Allow form submission logic to continue only when all fields are valid.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <label >Username</label>
+        <input id="field1" type="text">
+        <span id="error1" style="color:red"></span><br><br>
+        <label>Password</label>
+        <input id="field2" type="password">
+        <span id="error2" style="color:red"></span><br><br>
+        <button>Submit</button>
+    </form>
+    
+    
+</body>
+<script>
+    let form=document.getElementById('form');
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        let field1=document.getElementById("field1").value;
+        let field2=document.getElementById("field2").value;
+        let error1= document.getElementById("error1");
+        let error2=document.getElementById("error2");
+        if(field1==''){
+           error1.textContent="Name is required";
+            console.log("Name is required");
+        }
+        if(field2==''){
+           error2.textContent="Password is required"; 
+            console.log("Password is required");
+        }
+        if(field1!="" && field2!=""){
+            console.log("Form Valid");
+        }
+
+
+    });
+</script>
+</html>

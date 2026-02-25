@@ -28,9 +28,12 @@ c. One element using querySelector()
     let title=document.getElementById('title');
     let para=document.getElementsByClassName("para");
     let title1=document.querySelector('#title');       
-    title.innerText="Selecting Elements & Updating Content";
-    para.innerText="This is Suji Ramachandran"; 
+    title.textContent="Selecting Elements & Updating Content";
+    para[0].textContent="This is Suji Ramachandran"; 
+    
     title.style.color ='blue';
     title.style.backgroundColor='lightgray';
+    para[0].style.backgroundColor=' red';
+    para[1].style.backgroundColor=' green';
 </script>
 </html>

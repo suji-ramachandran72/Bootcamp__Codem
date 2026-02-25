@@ -1,0 +1,44 @@
+<!--Task 10: Attribute Manipulation Based on User Interaction 
+Requirements 
+1. Create at least one interactive element (button or checkbox). 
+2. Select a target element whose attribute will be modified. 
+3. On user interaction: 
+a. Check if a specific attribute exists using hasAttribute(). 
+b. Add the attribute using setAttribute() if it does not exist. 
+c. Remove the attribute using removeAttribute() if it exists. 
+4. The attribute change must affect the element’s behavior or appearance. 
+5. Log the attribute state to the console after each interaction. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id='para'>This is our project </p>
+    <button id="btn" >Click Me</button>
+
+</body>
+<script>
+  
+    let button=document.getElementById('btn');
+    let para=document.getElementById('para')
+    button.addEventListener('click',function(){
+    if(para.hasAttribute('disabled')){
+        para.removeAttribute('disabled');
+        para.style.color='white';
+        console.log('Attribute removed');
+    }
+    else{
+        para.setAttribute("disabled","true");
+        para.style.color='green';
+        console.log('Attribute added');
+    }
+    let value=para.hasAttribute('disabled');
+    console.log(value);
+    });
+    
+    
+</script>
+</html>

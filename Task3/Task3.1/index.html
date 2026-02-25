@@ -30,16 +30,13 @@ d. isActive (boolean)
         email:'suji@gmail.com',
         isActive: false
     }
-    function updateProfile(user){
-        user.name='Suji Ramachandran';
-        user.age=20;
-        user['email']='sujiramachandran@gmail.com';
-        user['isActive']=true;
-        user['phoneno']='1234567890';
-        return "updated datailes:\nName:"+ user.name +"\nAge:"+user.age+'\nEmail:'+user['email']+"\nActive:"+user['isActive']+"\nPhoneno:"+user['phoneno'];
-
-    }
-    let result=updateProfile(userProfile);
+   
+        userProfile.name='Suji Ramachandran';
+        userProfile.age=20;
+        userProfile['email']='sujiramachandran@gmail.com';
+        userProfile['isActive']=true;
+        userProfile['phoneno']='1234567890';
+    console.log(userProfile);
     console.log("Name:"+userProfile.name);
     console.log("Age:"+userProfile.age);
     console.log("Email:"+userProfile.email);
