@@ -1,0 +1,54 @@
+<!--Task 10 – Live Character Counter 
+Requirement: 
+1. Create an empty array called inputs to store text input values. 
+(inputs = [] ).  
+2. Add a textarea input on the page Using DOM.  
+• User types: "Hello" 
+• Display the live character count as the user types. 
+o Characters: 5 
+o Longest Input: Hello 
+3. Store each submitted input in the inputs array. 
+On Submit : inputs = ["Hello"] -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        let inputs=[];
+        let app=document.getElementById("result");
+        let textArea=document.createElement("textarea");
+        let countDisplay=document.createElement("div");
+        let longestDisplay=document.createElement("div");
+        let button=document.createElement("button");
+        button.textContent="submit";
+        app.appendChild(textArea);
+        app.appendChild(countDisplay);
+        app.appendChild(longestDisplay);
+        app.appendChild(button);
+        textArea.addEventListener("input", function(){
+                let text=textArea.value.trim();
+                countDisplay.textContent="Characters:"+text.length;
+                let longest=text;
+                inputs.forEach(function(item){
+                    if(item.length > longest.length){
+                        longest=item;
+                    }
+                });
+                longestDisplay.textContent="Longest Inputs:"+longest;
+        });
+        button.addEventListener("click",function(){
+let text=textArea.value.trim();
+if(text=='' )return;
+inputs.push(text);
+console.log("Inputs Array:"+inputs);
+textArea.value="";
+countDisplay.textContent="Characters: 0";
+        });
+    </script>
+</body>
+</html>

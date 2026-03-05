@@ -1,0 +1,73 @@
+<!--Task 18 – Drag Order Simulator 
+Requirements: 
+1. Create an array called items with string values representing order. 
+Ex: items = ["Item A", "Item B", "Item C", "Item D"]; 
+2. Display the items on the page using the DOM as a list. 
+3. Add "Move Up" and "Move Down" buttons for each item. 
+4. Clicking buttons should update the array and reorder items 
+dynamically. 
+5. Prevent moving the first item up or last item down.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .list{
+            margin:10px;
+            padding:10px;
+            background:#f2f2f2;
+            list-style:none;
+            width:300px;
+        }
+        .list button{
+            padding:10px;
+            margin:10px;
+        }
+        button{
+            margin-left:5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Drag Order Simulator </h1>
+    <ul class="list"></ul>
+    <script>
+      
+        let items=["Item A", "Item B", "Item C", "Item D"];
+        let list=document.querySelector(".list");
+       
+        function render(){
+            list.innerHTML="";
+            items.forEach((item,index)=>{
+                list.innerHTML += `
+                <li>${item}
+                <button onclick="moveUp(${index})">UP</button>
+                <button onclick="moveDown(${index})">DOWN</button>
+               </li> `;
+            });
+        }
+        function moveUp(index){
+            if(index > 0){
+                 [items[index],items[index-1]]=[items[index-1],items[index]];
+                 render();
+            }
+            
+        }
+         function moveDown(index){
+            if(index < items.length -1){
+              [items[index],items[index+1]]=[items[index+1],items[index]];
+              render();
+            }
+    
+        }
+        render();
+       
+      
+    </script>
+</body>
+</html>

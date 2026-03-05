@@ -1,0 +1,92 @@
+<!--Task 9 – Inventory Manager 
+Requirement: 
+1. Create an array called inventory with objects containing: 
+a. product (string) 
+b. quantity (number) 
+Ex : 
+inventory = [ 
+{ product: "Pen", quantity: 10 }, 
+{ product: "Notebook", quantity: 5 }, 
+{ product: "Eraser", quantity: 0 } 
+]; 
+2. Display each product and quantity in a table or list. 
+3. Add "Increase" and "Decrease" buttons for each product. 
+4. Clicking buttons should update the array and the UI dynamically. 
+5. Prevent quantity from going below zero. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top:40px;
+            text-align: center;
+        }
+        table,th,td{
+            margin:auto;
+            border:1px solid black;
+            border-collapse: collapse;
+            padding:8px;
+        }
+        button{
+            margin:2px;
+            margin:4px 8px;
+            cursor:pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Inventory Manager </h1>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Products</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+<script>
+    let inventory = [ 
+{ product: "Pen", quantity: 10 }, 
+{ product: "Notebook", quantity: 5 }, 
+{ product: "Eraser", quantity: 0 } 
+]; 
+let tableBody=document.getElementById("tableBody");
+function displayProducts(){
+    tableBody.innerHTML="";
+    inventory.forEach(function(item,index){
+        let row=document.createElement("tr");
+    row.innerHTML=`
+    <td>${item.product}</td>
+    <td>${item.quantity}</td>
+    <td>
+        <button onclick="increase(${index})">Increase</button>
+         <button onclick="decrease(${index})">Decrease</button>
+         </td>`;
+         tableBody.appendChild(row);
+});
+}
+function increase(index){
+    inventory[index].quantity+=1;
+    displayProducts();
+}
+
+function decrease(index){
+    if(inventory[index].quantity > 0){
+        inventory[index].quantity-=1;
+    }
+    displayProducts();
+}
+
+displayProducts();
+    </script>
+    
+</body>
+</html>

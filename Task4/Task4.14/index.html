@@ -1,0 +1,53 @@
+<!--Task 14 – Price Calculator 
+Requirement: 
+1. Create an array called prices with numeric values. 
+Ex: prices = [100, 200, 300]; 
+2. Calculate the total price using a loop. 
+3. Apply tax and discount rules (e.g., 10% tax, 5% discount) using 
+calculations. 
+4. Calculation :  
+•  Total = 600 
+• Tax (10%) = 60  => 600 + 60 = 660 
+• Discount (5%) = 30 => 660 - 30 = 630 
+• Final = 630 
+5. Display each individual price and the total price in the DOM.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Price Calculator </h1>
+    <script>
+        let prices=[100,200,300];
+        function calculatePrice(){
+        let total=0;
+        let result=document.createElement("div");
+        result.innerHTML='';
+        prices.forEach((price)=>{
+            total+=price;
+        });
+        let tax=total*0.10;
+        let afterTax=total+tax;
+
+        let discount=total*0.05;
+        let afterDiscount=afterTax-discount;
+    
+        result.innerHTML=`
+        <p>Total= ${total}</p>
+        <p>Tax(10%)=${tax}</p>
+        <p>After Tax= ${afterTax}</p>
+        <p>Discount=${discount}</p>
+        <p>Final=${afterDiscount}</p>
+        `;
+        document.body.appendChild(result);
+        console.log(total);
+        console.log(afterTax);
+        console.log(afterDiscount);
+        }
+        calculatePrice();
+    </script>
+</body>
+</html>

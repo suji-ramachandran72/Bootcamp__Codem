@@ -1,0 +1,71 @@
+<!--Task 2 – Multi-Filter Product List 
+Requirements: 
+1. Create an array called products where each product is an object with 
+properties:
+a. name (string) 
+b. price (number) 
+c. category (string) 
+Eg : let products = [ 
+{ name: "Laptop", price: 50000, category: "Electronics" }, 
+{ name: "Shirt", price: 1200, category: "Clothing" }, 
+] 
+2. Display all products in a table or cards on the page using the DOM. 
+3. Create a dropdown filter for category and two input fields for minimum 
+and maximum price. 
+4. Use loops to filter products based on the selected category and price 
+range. 
+(Eg : Filter selected: 
+• Category: Electronics 
+• Min price: 10000 
+• Max price: 30000 
+Filtered Products : Phone – 20000) 
+5. Display only the filtered products dynamically in the UI. 
+6. Show a message "No products found" if the filter returns an empty array-->
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Product Filter</h2>
+<select id="category">
+  <option value="">All</option>
+  <option value="Electronics">Electronics</option>
+  <option value="Clothing">Clothing</option>
+</select>
+<input type="number" id="min" placeholder="Min Price">
+<input type="number" id="max" placeholder="Max Price">
+<button onclick="filterProducts()">Filter</button>
+<div id="result"></div>
+<script>
+let products = [
+ { name:"Laptop",price:50000,category:"Electronics"},
+ { name:"Phone",price:20000,category:"Electronics"},
+ { name:"Shirt",price:1200,category:"Clothing"}
+];
+let result=document.getElementById("result");
+function display(list){
+  result.innerHTML="";
+  if(list.length=== 0){
+    result.innerHTML="<p>No products found</p>";
+    return;
+  }
+  list.forEach(p=>{
+    result.innerHTML+=`<p>${p.name} - ₹${p.price} (${p.category})</p>`;
+  });
+}
+function filterProducts(){
+  let cat=document.getElementById("category").value;
+  let min=document.getElementById("min").value||0;
+  let max=document.getElementById("max").value||Infinity;
+  let filtered=[];
+  for(let i=0;i<products.length;i++){
+    let p=products[i];
+    if((cat===""||p.category===cat) &&
+       p.price>=min && p.price<=max){
+        filtered.push(p);
+    }
+  }
+  display(filtered);
+}
+display(products);
+</script>
+</body>
+</html>

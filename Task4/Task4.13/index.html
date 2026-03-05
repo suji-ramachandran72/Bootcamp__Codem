@@ -1,0 +1,51 @@
+<!--Task 13 – Comment System 
+Requirement: 
+1. Create an empty array called comments. 
+2. Add an input field and "Submit" button for users to enter comments On 
+the page using the DOM. 
+3. If the Comments Already exists Display the latest 5 comments on the 
+page (newest first) Otherwise Display “No Comments In the Array”. 
+4. Store new comments in the array. 
+5. Update the displayed comments dynamically after submission. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Comment System</h1>
+    <label >Comment</label>
+    <input type="text" placeholder="enter the comment" id="comment" required>
+    <button onclick="addComment()">Submit</button>
+    <div id="div"></div>
+    <script>
+        let comments=[];
+        let input=document.getElementById("comment");
+        let result=document.getElementById("div");
+        function addComment(){
+            let text=input.value.trim();
+            if(text=='') return;
+            comments.push(text);
+            input.value="";
+            displayComments();
+        }
+        function displayComments(){
+            result.innerHTML="";
+            if(comments.length==0){
+                result.innerHTML=`
+                <p>No Comments In The array!!!</p>
+                `;
+            }
+            let latest=comments.slice(-5).reverse();
+            latest.forEach(function(comment){ 
+                let li=document.createElement("li");
+                li.textContent=comment;
+                result.appendChild(li);
+            });
+        }
+        displayComments();
+    </script>
+</body>
+</html>

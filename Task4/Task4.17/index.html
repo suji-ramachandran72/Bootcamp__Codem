@@ -1,0 +1,96 @@
+<!--Task 17 – Expense Tracker 
+Requirement: 
+1. Create an array called expenses with objects containing: 
+a. category (string) 
+b. amount (number) 
+Ex: 
+expenses = [ 
+{ category: "Food", amount: 200 }, 
+{ category: "Travel", amount: 500 }, 
+{ category: "Food", amount: 300 } ] 
+2. Display all expenses in a table or list Using DOM. 
+3. Use loops to calculate the total expense per category. 
+4. Display the total for each category in the DOM like this : 
+• Food: ₹500 
+• Travel: ₹500 
+• Total: ₹1000 
+5. Add a grand total of all expenses.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-left:100px;
+        }
+        h1{
+            margin-left:70px;
+        }
+        table,th,td{
+            margin-left:100px;
+            border:1px solid black;
+            border-collapse: collapse;
+            padding:8px;
+        }
+        #grantAmt{
+            margin-right:50px;
+        }
+        p{
+            margin-left:100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <table id="table">
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>
+    </table>
+    <p><b>Category Total</b></p>
+    <div id="grantAmt"></div>
+    <script>
+        let expenses=[ 
+            {category: "Food", amount: 200 }, 
+            {category: "Travel", amount: 500 }, 
+            {category: "Food", amount: 300 } ] ;
+        let table=document.getElementById("table");
+        let totalsDiv=document.getElementById("grantAmt");
+        function calculateExpense(){
+            table.innerHTML=`
+            <tr>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>`;
+        let categoryTotal={};
+        let grandTotal=0;
+        for(let i=0;i < expenses.length;i++){
+            let exp=expenses[i];
+            table.innerHTML+=`
+            <tr>
+                <td>${exp.category}</td>
+                <td>${exp.amount}</td>     
+            </tr>`;
+            if(categoryTotal[exp.category]){
+               categoryTotal[exp.category]+=exp.amount; 
+            }else{
+               categoryTotal[exp.category]=exp.amount; 
+            }
+            grandTotal+=exp.amount;
+             
+        }
+        totalsDiv.innerHTML="";
+        for(let category in categoryTotal){
+            totalsDiv.innerHTML+=`
+            <p>${category}:Rupees${categoryTotal[category]}</p>`;
+        }
+        totalsDiv.innerHTML+=`
+        <p><strong>Total:${grandTotal}</strong></p>`;
+        }
+        calculateExpense();
+    </script>
+</body>
+</html>

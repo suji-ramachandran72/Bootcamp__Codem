@@ -1,0 +1,62 @@
+<!--Task 6 – Search + Highlight 
+Requirements: 
+1. Create an array called texts with multiple string values. 
+texts = ["JavaScript", "Java", "Python", "React"] 
+2. Display all text values in a list on the page using the DOM. 
+3. Add an input field for the user to type a search term. 
+4. Use a loop to check which text values contain the search term. 
+5. Display only the matching results dynamically. 
+• Search input: ja 
+• UI result: 
+o JavaScript 
+o Java 
+6. Update the display as the user types (live search).-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search + Highlight</title>
+    <style>
+        .highlight {
+            background-color:yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Live Search</h2>
+    <input type="text" id="search" placeholder="Search...">
+    <ul id="resultList"></ul>
+    <script>
+        let texts = ["JavaScript", "Java", "Python", "React"];
+        let searchInput=document.getElementById("search");
+        let resultList=document.getElementById("resultList");
+        function displayResults(filter = "") {
+            resultList.innerHTML="";
+            let matches=0;
+            texts.forEach(function(text) {
+                if (text.toLowerCase().includes(filter.toLowerCase())) {
+                    matches++;
+                    let li=document.createElement("li");
+                    let highlighted=text.replace(
+                        new RegExp(filter, "gi"),
+                        match => `<span class="highlight">${match}</span>`
+                    );
+                    li.innerHTML=highlighted;
+                 resultList.appendChild(li);
+                }
+            });
+            if(matches === 0) {
+                resultList.innerHTML= "<li>No results found.</li>";
+            }
+        }
+        searchInput.addEventListener("input", function () {
+            displayResults(searchInput.value);
+        });
+        displayResults();
+    </script>
+</body>
+
+</html>

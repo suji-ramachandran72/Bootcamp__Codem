@@ -1,0 +1,61 @@
+<!--Task 4 – Duplicate Highlighter 
+Requirements: 
+1. Display the Array Items 
+a. Use DOM manipulation to display all items from the items array 
+on the web page. 
+b. Each item should be shown as a list element (for example, inside 
+<ul> and <li> tags). 
+2. Find Duplicate Values 
+a. Use loops to compare the items in the array. 
+b. Identify which values appear more than once in the array 
+(duplicate values). 
+3. Highlight Duplicate Items 
+a. When displaying the list: 
+i. Items that appear more than once should be visually 
+highlighted. 
+ii. For example, change their background color, text color, or 
+add a border. 
+4. Items that appear only once should remain normal. 
+5. Expected Behavior 
+a. "apple" appears twice → both "apple" list items should be 
+highlighted.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+            .highlight {
+                background-color: yellow;
+                width:fit-content;
+            }
+        </style>
+</head>
+<body>
+        <h2>Duplicate Highlighter</h2>
+        <ul id="list"></ul>
+        <script>
+            let items=["apple", "banana", "apple", "orange", "banana", "grape"];
+            let list=document.getElementById("list");
+            function display() {
+                list.innerHTML="";
+                for (let i=0;i< items.length;i++) {
+                    let count=0;
+                    for (let j=0;j<items.length;j++) {
+                        if (items[i]===items[j]) {
+                            count++;
+                        }
+                    }
+                    let li=document.createElement("li");
+                    li.textContent=items[i];
+                    if (count>1) {
+                        li.classList.add("highlight");
+                    }
+                    list.appendChild(li);
+                }
+            }
+            display();
+        </script>
+</body>
+</html>

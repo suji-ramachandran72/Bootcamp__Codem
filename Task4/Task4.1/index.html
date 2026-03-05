@@ -1,0 +1,113 @@
+<!--Task 1 – Dynamic Scoreboard 
+Requirement: 
+1. Create an array called scores to store player scores (numbers). 
+Example Array : scores = [10, 15, 8] 
+2. Display all scores on the page using the DOM. 
+3. While displaying, assign player labels dynamically based on the index 
+of the array 
+(e.g., index 0 → Player 1, index 1 → Player 2). 
+4. For each player, create two buttons: "Increase" and "Decrease". 
+5. Clicking "Increase" should add 1 to the player's score and update the 
+array. 
+6. Clicking "Decrease" should subtract 1 from the player's score and 
+update the array. 
+Example : UI Shows  
+Player 1: 10  [+] [-] 
+Player 2: 15  [+] [-] 
+Player 3:  8  [+] [-] 
+Highest Score: 15 
+Lowest Score: 8 
+7. After each change, re-render the scores, so the UI always reflects the 
+array. 
+8. Display the highest and lowest score below the scoreboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            margin-top: 30px;
+           
+            color:white;
+        }
+        .player{
+            margin:15px;
+            font-size:18px;
+          
+        }
+        .player button{
+            margin-left:10px;
+        }
+        h1{
+            color:black;
+        }
+        .button{
+            padding:5px 10px;
+            margin:10px;
+            cursor:pointer;
+
+
+        }
+        .result{
+            margin-top:20px;
+            font-weight:bold;
+            font-size:20px;
+        }
+        .scoreBoard{
+            height:200px;
+            width: 500px;
+            padding-top:10px;
+            background-color: bisque;
+            color:black;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Player ScoreBoard</h1>
+<script>
+    let scores=[10,15,8];
+    let container=document.createElement("div");
+    container.className="scoreBoard";
+    document.body.appendChild(container);
+    function render(){
+        container.innerHTML="";
+        scores.forEach(function (score,index) {
+            let playerDiv=document.createElement("div");
+            playerDiv.className="player";
+            let playerNumer=index+1;
+            playerDiv.textContent=`Player ${playerNumer} : ${score}`;
+            let increaseBtn=document.createElement("button");
+            increaseBtn.innerText="+";
+            increaseBtn.addEventListener('click',function(){
+                scores[index]+=1;
+                render();
+            });
+            let decreaseBtn=document.createElement("button");
+            decreaseBtn.innerText="-";
+            
+            decreaseBtn.addEventListener('click',function(){
+                scores[index]-=1;
+                render();
+            });
+            playerDiv.appendChild(increaseBtn);
+            playerDiv.appendChild(decreaseBtn);
+            container.appendChild(playerDiv);
+
+    });
+    let highest=Math.max(...scores);
+    let lowest=Math.min(...scores);
+    let resultDiv=document.createElement("div");
+    resultDiv.className="result";
+    resultDiv.textContent="Highest Score:" + highest + " \nLowest score:"+lowest;
+    container.appendChild(resultDiv)
+
+    }
+    render();
+    
+</script>
+</body>
+</html>

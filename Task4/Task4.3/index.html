@@ -1,0 +1,61 @@
+<!--Task 3 – Editable Table 
+Requirements: 
+1. Create an array called users where each element is an object with: 
+a. name (string) 
+b. age (number) 
+c. email (string)  
+(eg: users = [ 
+{ name: "Ali", age: 22, email: "ali@mail.com" }, 
+{ name: "Sara", age: 25, email: "sara@mail.com" } 
+])2. Render the user data as a table on the page using the DOM. 
+3. Each row should have an "Edit" button. 
+4. The table should shows like this:  
+Ali      
+| 22 | ali@mail.com | Edit 
+Sara  | 25 | sara@mail.com | Edit 
+5. Clicking "Edit" should allow the user to modify name or age inline. 
+6. After editing, update both the array and the table UI dynamically. 
+7. Add the "Save" button to finalize changes for each row.-->
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Editable Table</h2>
+    <table border="1" id="table"></table>
+    <script>
+        let users=[
+            { name: "Ali", age: 22, email: "ali@mail.com" },
+            { name: "Sara", age: 25, email: "sara@mail.com" }
+        ];
+        let table=document.getElementById("table");
+        function display() {
+            table.innerHTML="";
+            users.forEach((u, index)=>{
+                let row=document.createElement("tr");
+                row.innerHTML=`
+      <td><input value="${u.name}" id="name${index}" disabled></td>
+      <td><input value="${u.age}" id="age${index}" disabled></td>
+      <td>${u.email}</td>
+      <td>
+        <button onclick="edit(${index})">Edit</button>
+        <button onclick="save(${index})">Save</button>
+      </td>
+    `;
+               table.appendChild(row);
+            });
+        }
+        function edit(i) {
+            document.getElementById("name"+i).disabled = false;
+            document.getElementById("age"+i).disabled = false;
+        }
+        function save(i) {
+            users[i].name=document.getElementById("name"+i).value;
+            users[i].age=document.getElementById("age"+i).value;
+            document.getElementById("name"+i).disabled=true;
+            document.getElementById("age"+i).disabled=true;
+            display();
+        }
+        display();
+    </script>
+</body>
+
+</html>

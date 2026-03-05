@@ -1,0 +1,70 @@
+<!--Task 15 – Password Rule Checker 
+Requirement: 
+1. Add an input field for password entry. 
+2. Create an array called rules with objects: 
+a. rule (description string) 
+b. isPassed (boolean) 
+Ex: 
+rules = [ 
+{ rule: "Minimum 8 characters", isPassed: false }, 
+{ rule: "At least one uppercase letter", isPassed: false }, 
+{ rule: "At least one number", isPassed: false }, 
+{ rule: "At least one special character", isPassed: false } 
+]; 
+3. Check password against multiple rules (e.g., minimum length, 
+uppercase, number, special character). 
+4. Store failed rules in an array. 
+5. Display which rules passed or failed dynamically as the user types.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pass{color:green;}
+        .fail{color:red;}
+    </style>
+</head>
+<body>
+    <h1>Password Rule Checker</h1>
+    <label >Password:</label>
+    <input type="password" id="password" placeholder="Enter password" required>
+    <div id="result"></div>
+    <script>
+        let rules = [ 
+{ rule: "Minimum 8 characters", isPassed: false }, 
+{ rule: "At least one uppercase letter", isPassed: false }, 
+{ rule: "At least one number", isPassed: false }, 
+{ rule: "At least one special character", isPassed: false } 
+]; 
+let passwordInput=document.getElementById("password");
+let result=document.getElementById("result");
+passwordInput.addEventListener("input",function(){
+    let value=passwordInput.value;
+    rules[0].isPassed=value.length >=8;
+    rules[1].isPassed=/[A-z]/.test(value);
+    rules[2].isPassed=/[0-9]/.test(value);
+    rules[3].isPassed=/[!@#$%^&*?]/.test(value);
+    displayRules();
+});
+function displayRules(){
+    result.innerHTML="";
+    let failedRules=[];
+    for(let i=0;i<rules.length;i++){
+        let list=document.createElement('li');
+        list.textContent=rules[i].rule;
+        if(rules[i].isPassed){
+            list.className='pass';
+        }
+        else{
+            list.classname='fail';
+            failedRules.push(rules[i].rule);
+        }
+        result.appendChild(list);
+    }
+        console.log("Failedrules:"+failedRules);
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!--Task 8 – Attendance Tracker 
+Requirement: 
+1. Create an array of students: 
+a) Name 
+b) Attendance status (true/false) 
+students = [ 
+{ name: "Ali", present: true }, 
+{ name: "Sara", present: false }    ] 
+2. Display each student with their status. 
+• Ali   - Present 
+• Sara  - Absent 
+Present: 1     Absent: 1 
+3. Toggle Attendance on Click 
+• Add Toggle Button for Each Students .When you click the button: 
+i. Change their present value from true to false or from false 
+to true. 
+ii. Update: 
+o Student status 
+o Total present count 
+o Total absent count -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top:30px;
+        }
+        .student{
+            margin:10px;
+        }
+        .present{
+            color:green;
+
+        }
+        .absent{
+            color:red;
+
+        }
+        button{
+            margin-left:40px;
+            padding:4px 8px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Tracker</h1>
+    <div id="studentList"></div>
+    <div id="summaryTable"></div>
+    <script>
+        let students = [ 
+{ name: "Ali", present: true }, 
+{ name: "Sara", present: false }    ] ;
+let studentList=document.getElementById("studentList");
+let summary=document.getElementById("summaryTable");
+function displayStudents(){
+    studentList.innerHTML="";
+    let presentCount=0;
+    let absentCount=0;
+    students.forEach(function(student,index){
+        let div=document.createElement("div");
+        div.className="student";
+        let status=student.present?"Present":"Absent";
+        if(student.present){
+            presentCount++;
+
+        }else{
+            absentCount++;
+        }
+        div.innerHTML=`
+        <span class='${student.present?"present":"absent"}'>
+            ${student.name}-${status}
+        </span>
+    <button onclick=toggle(${index})>Toggle</button>`;
+    studentList.appendChild(div);
+  });
+  summary.textContent="Present:"+presentCount+"Absent:"+absentCount;
+}
+function toggle(index){
+    students[index].present=!students[index].present;
+    displayStudents();
+
+}
+  displayStudents();
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!--Task 7 – Dynamic Form Builder 
+Requirement: 
+1. Create an array describing form fields: 
+a) Input type 
+b) Label text 
+Ex: fields = [ 
+{ type: "text", label: "Name" }, 
+{ type: "email", label: "Email" } 
+] 
+a) Use a loop to go through the fields array. 
+b) For each object: 
+a. Create a label 
+b. Create an input field based on the type 
+c) Display the generated form on the page using the DOM. 
+2. On Form Submission 
+d) Read all the values entered by the user. 
+e) Store those values in a new array (for example: formData). 
+f) Show or log the stored data -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family:Ariel;
+            margin:40px;
+            text-align:center;
+        }
+        label{
+            width:100px;
+            margin:auto;
+            text-align:center;
+        }
+        input{
+            width:200px;
+            margin-top:5px;
+            padding:5px;
+            gap:10px;
+        }
+        button{
+            margin-top:15px;
+            padding:6px 10px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Form Builder</h1>
+    <div id="formContainer"></div>
+    <script>
+        let fields = [ 
+{ type: "text", label: "Name" }, 
+{ type: "email", label: "Email" } 
+];
+let formContainer=document.getElementById("formContainer");
+let form=document.createElement("form");
+fields.forEach(function(field,index){
+    let label=document.createElement("label");
+    label.textContent=field.label;
+    let input=document.createElement("input");
+    input.type=field.type;
+    input.name=field.label.toLowerCase();
+    input.id="field"+index;
+    form.appendChild(label);
+    form.appendChild(input);
+
+});
+ let button=document.createElement("button");
+    button.type="submit";
+    button.textContent="Submit";
+    form.appendChild(button);
+    formContainer.appendChild(form);
+form.addEventListener("submit",function(event){
+    event.preventDefault();
+    let formData=[];
+    fields.forEach(function(field,index){
+        let value=document.getElementById("field"+index).value;
+        formData.push(value);
+        console.log(formData);
+    });
+});
+    </script>
+    
+</body>
+</html>

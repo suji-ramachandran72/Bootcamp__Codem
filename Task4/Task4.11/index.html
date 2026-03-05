@@ -1,0 +1,85 @@
+<!--Task 11 – Sorting Visualizer 
+Requirement: 
+1. Create an array called numbers with random numbers. 
+2. Display the numbers visually (e.g., as bars or a list). 
+3. Implement a sorting algorithm (e.g., bubble sort) using loops. 
+4. Show each step of the sorting visually in the DOM. 
+For Example : numbers = [5, 2, 4] 
+• Sorting steps shown visually: 
+5 2 4 
+2 5 4 
+2 4 5 
+5. Update the display after every swap in the sorting process.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+        <title>Sorting Visualizer</title>
+        <style>
+            body {
+                text-align:center;
+                font-family:Arial;
+                margin-top:40px;
+            }
+            #container{
+                display:flex;
+                justify-content:center;
+                align-items:flex-end;
+                gap:10px;
+                height:200px;
+                margin:20px;
+            }
+            .bar{
+                width:40px;
+                background-color:teal;
+                color:white;
+                text-align:center;
+            }
+            button {
+                padding:8px 15px;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Bubble Sort Visualizer</h2>
+        <div id="container"></div>
+        <button onclick="startSort()">Start Sorting</button>
+        <script>
+            let numbers = [5, 2, 4];
+            let container=document.getElementById("container");
+            function display() {
+                container.innerHTML="";
+                numbers.forEach(function (num) {
+                    let div=document.createElement("div");
+                    div.className="bar";
+                    div.style.height=num*30+"px";
+                    div.textContent=num;
+                    container.appendChild(div);
+                });
+            }
+            display();
+            async function startSort() {
+                for (let i = 0; i < numbers.length; i++) {
+                    for (let j = 0; j < numbers.length - i - 1; j++) {
+                        if (numbers[j]>numbers[j + 1]) {
+                            let temp=numbers[j];
+                            numbers[j]=numbers[j + 1];
+                            numbers[j + 1]=temp;
+                            display();
+                            await sleep(800);
+                        }
+                    }
+                }
+            }
+            function sleep(ms){
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        </script>
+    </body>
+</html>

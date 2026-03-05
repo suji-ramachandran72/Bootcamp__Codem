@@ -1,0 +1,67 @@
+<!--Task 5 – Manual Pagination 
+Requirement: 
+1. Create an array called all Items with at least 20 string or number items. 
+( allItems = [1,2,3,...,20] ) 
+2. Display only 5 items at a time on the page using the DOM. 
+3. Add "Next" and "Previous" buttons for navigation. 
+4. Clicking "Next" should show the next 5 items, clicking "Previous" should 
+show the previous 5 items. 
+• Page 1 shows : 1 2 3 4 5 
+• Click Next : => Page 2  
+• Page 2 shows : 6 7 8 9 10 
+5. Update the DOM each time the page changes using loops. 
+6. Buttons disabled: 
+• Previous disabled on page 1 
+• Next disabled on last page-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Pagination</title>
+</head>
+<body>
+    <h2>Manual Pagination</h2>
+    <ul id="list"></ul>
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+    <script>
+        let allItems=[];
+        for (let i=1;i<=20;i++) {
+            allItems.push(i);
+        }
+        let currentPage=1;
+        let itemsPerPage=5;
+        let list=document.getElementById("list");
+        let prevBtn=document.getElementById("prevBtn");
+        let nextBtn=document.getElementById("nextBtn");
+        function displayItems() {
+            list.innerHTML= "";
+            let start=(currentPage-1) * itemsPerPage;
+            let end=start + itemsPerPage;
+            let pageItems=allItems.slice(start, end);
+            pageItems.forEach(function(item) {
+                let li=document.createElement("li");
+                li.textContent=item;
+                list.appendChild(li);
+            });
+            prevBtn.disabled=currentPage===1;
+            nextBtn.disabled=end>=allItems.length;
+        }
+        nextBtn.addEventListener("click",function () {
+            currentPage++;
+            displayItems();
+        });
+        prevBtn.addEventListener("click",function () {
+            currentPage--;
+            displayItems();
+        });
+        displayItems();
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
