@@ -1,0 +1,21 @@
+<!--Task 5: Immediately Invoked Function Expression (IIFE) 
+Requirements 
+● Create an IIFE that: 
+○ declares a variable inside the function 
+○ performs a mathematical operation 
+● Display the result using console.log(). 
+● Ensure the variable is not accessible outside the function.-->
+<script>
+    (function(){
+        let a=10;
+        let b=2;
+        let add=a+b;
+        let sub=a-b;
+        let mul=a*b;
+        let div=a/b;
+        console.log("IIFE Addition:"+add);
+        console.log("IIFE Subtraction:"+sub);
+        console.log("IIFE Multiplication:"+mul);
+        console.log("IIFE Division:"+div);
+    })();
+</script> 

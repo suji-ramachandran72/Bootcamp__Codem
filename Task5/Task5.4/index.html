@@ -1,0 +1,19 @@
+<!--Task 4: Function with Default Parameters 
+Requirements 
+● Create a function named calculateDiscount that accepts: 
+○ price 
+○ discount percentage (default value should be provided) 
+● Calculate the final price after discount. 
+● Return the calculated value. 
+● Call the function with and without passing the discount value. 
+● Log both results using console.log().-->
+<script>
+    function calculateDiscount(price,discount=50){
+        let finalAmount=price-(price*50/100);
+        return finalAmount;
+    }
+    let discount1=calculateDiscount(1000);
+    let discount2=calculateDiscount(2000,30);
+    console.log("Price with discount(30%):"+discount2);
+    console.log("Product with default discount:"+discount1);
+</script>

@@ -43,13 +43,13 @@ highlighted.-->
                 for (let i=0;i< items.length;i++) {
                     let count=0;
                     for (let j=0;j<items.length;j++) {
-                        if (items[i]===items[j]) {
+                        if (i!==j && items[i]===items[j]) {
                             count++;
                         }
                     }
                     let li=document.createElement("li");
                     li.textContent=items[i];
-                    if (count>1) {
+                    if (count>0) {
                         li.classList.add("highlight");
                     }
                     list.appendChild(li);

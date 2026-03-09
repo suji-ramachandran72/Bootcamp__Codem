@@ -1,0 +1,69 @@
+<!--Task 6: Form Validation – Input Presence Check 
+Requirements 
+● Create an HTML form with: 
+○ name input field 
+○ email input field 
+○ submit button 
+● Write JavaScript to validate the form on submission. 
+● Check if the name and email fields are empty. 
+● Display validation messages using console.log(). 
+● Prevent form submission if any field is empty. -->
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: #f2f2f2;
+    }
+    form{
+        width:300px;
+        margin:100px auto;
+        padding:20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px gray;
+    }
+    label{
+        font-weight: bold;
+    }
+    input{
+        width:100%;
+        padding:8px;
+        margin-top:5px;
+
+    }
+    button{
+        width:100%;
+        padding:10px;
+        background-color: #4CAF50;
+        color:white;
+        margin-top:10px;
+        border:none;
+        cursor:pointer;
+    }
+    button:hover{
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <form id="form">
+    <label>Name</label>
+    <input type="text" id="name"><br><br>
+    <label>Email</label>
+    <input type="email" id="email"><br><br>
+    <button id="button">Submit</button>
+</form>
+<script>
+    let name=document.getElementById("name");
+    let email=document.getElementById("email");
+    let form=document.getElementById("form");
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        if(name.value == "" || email.value == ""){
+            console.log("Name  and Email is Required");
+        }
+        if(name.value && email.value){
+            console.log("Login successful");
+        }
+    });
+
+</script>
+</body>

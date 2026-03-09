@@ -1,0 +1,28 @@
+<!--Task 3: Callback Function Implementation 
+Requirements 
+● Create a function named processNumber that accepts two 
+parameters: 
+○ a number 
+○ a callback function 
+● Inside the function, pass the number to the callback and return the 
+result. 
+● Create two callback functions: 
+○ one that doubles a number 
+○ one that halves a number 
+● Call processNumber using both callback functions. 
+● Display the results using console.log().-->
+<script>
+    function processNumber(num,callback){
+        return callback(num);
+    }
+    function doubleNumber(n){
+        return n*2;
+    }
+    function halfNumber(n){
+        return n/2;
+    }
+    let double=processNumber(2,doubleNumber);
+    let half=processNumber(8,halfNumber);
+    console.log("Double of  the number:"+double);
+    console.log("Half the number:"+half);
+</script>

@@ -1,0 +1,67 @@
+<!--Task 8: Form Validation – Password Length Check 
+Requirements 
+● Create an HTML form with a password input field. 
+● Write JavaScript to validate password length. 
+● Ensure the password has at least 8 characters. 
+● Display validation result using console.log(). 
+● Prevent form submission if the condition fails. -->
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: #f2f2f2;
+    }
+    form{
+        width:300px;
+        margin:100px auto;
+        padding:20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px gray;
+    }
+    label{
+        font-weight: bold;
+    }
+    input{
+        width:100%;
+        padding:8px;
+        margin-top:5px;
+
+    }
+    button{
+        width:100%;
+        padding:10px;
+        background-color: #4CAF50;
+        color:white;
+        margin-top:10px;
+        border:none;
+        cursor:pointer;
+    }
+    button:hover{
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <form id="form">
+    <label>Email</label>
+    <input type="text" id="email"><br><br>
+    <label>Password</label>
+    <input type="password" id="password"><br><br>
+    <button id="button">Submit</button>
+</form>
+<script>
+    let email=document.getElementById("email");
+    let password=document.getElementById("password");
+    let form=document.getElementById("form");
+    form.addEventListener("submit",function(event){
+        if(password.value.length > 8){
+            console.log("Login successful...");
+            event.preventDefault();
+        }else{
+        console.log("Error....Password has atleast 8 characters....");
+        event.preventDefault();
+        }
+        
+    });
+
+</script>
+</body>
